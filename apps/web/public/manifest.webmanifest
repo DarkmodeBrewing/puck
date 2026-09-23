@@ -8,6 +8,7 @@
   "background_color": "#0d1016",
   "theme_color": "#0d1016",
   "icons": [
-    { "src": "/puck.svg", "sizes": "any", "type": "image/svg+xml" }
+    { "src": "/puck.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/puck.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
