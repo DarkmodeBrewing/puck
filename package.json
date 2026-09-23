@@ -1,0 +1,17 @@
+{
+  "name": "puck",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev:web": "npm run dev -w @puck/web",
+    "dev:desktop": "npm run tauri -w @puck/desktop -- dev",
+    "typecheck": "tsc --noEmit -p packages/domain && tsc --noEmit -p packages/capabilities && tsc --noEmit -p packages/ui && tsc --noEmit -p apps/web && tsc --noEmit -p apps/desktop",
+    "build:web": "npm run build -w @puck/web",
+    "build:desktop": "npm run tauri -w @puck/desktop -- build"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

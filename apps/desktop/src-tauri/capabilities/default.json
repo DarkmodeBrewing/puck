@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main-window",
+  "description": "Core window access only; native device commands are not enabled.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

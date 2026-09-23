@@ -1,0 +1,13 @@
+{
+  "name": "Puck",
+  "short_name": "Puck",
+  "description": "The Gremlin client",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0d1016",
+  "theme_color": "#0d1016",
+  "icons": [
+    { "src": "/puck.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
