@@ -34,6 +34,8 @@ npm run dev:desktop
 
 The web and desktop builds compose the same React view. The browser uses a restricted browser capability adapter; desktop has a separate adapter boundary for future Tauri commands. No API endpoint or credential is embedded in the client. The manifest and SVG are placeholders; iPhone Home Screen behavior, icons, and offline policy still need device validation.
 
+CI typechecks and builds both frontend entries, formats and compiles the Tauri Rust host on Linux, runs CodeQL for TypeScript and Rust, and reviews dependency changes on pull requests. It does not yet build a distributable desktop package.
+
 ## Next vertical slice
 
 Connect a Puck-facing Gremlin API for sign-in, conversations, and streamed chat. Authorize every operation on the server. Then add execution listing and a reconnectable terminal stream without exposing Runner administration to the browser.

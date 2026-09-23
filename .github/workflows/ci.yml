@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   typescript:
     runs-on: ubuntu-latest
@@ -17,3 +20,30 @@ jobs:
       - run: npm run typecheck
       - run: npm run build:web
       - run: npm run build -w @puck/desktop
+
+  rust:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Tauri Linux prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends +            libwebkit2gtk-4.1-dev +            build-essential +            curl +            wget +            file +            libxdo-dev +            libssl-dev +            libayatana-appindicator3-dev +            librsvg2-dev +            patchelf
+      - name: Install stable Rust toolchain
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup default stable
+      - name: Check Rust formatting
+        run: cargo fmt --manifest-path apps/desktop/src-tauri/Cargo.toml --all -- --check
+      - name: Check Tauri native host
+        run: cargo check --manifest-path apps/desktop/src-tauri/Cargo.toml
+
+  dependency-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
