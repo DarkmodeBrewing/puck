@@ -35,8 +35,8 @@ jobs:
           rustup default stable
       - name: Check Rust formatting
         run: cargo fmt --manifest-path apps/desktop/src-tauri/Cargo.toml --all -- --check
-      - name: Check Tauri native host
-        run: cargo check --manifest-path apps/desktop/src-tauri/Cargo.toml
+      - name: Build Tauri native host
+        run: cargo build --manifest-path apps/desktop/src-tauri/Cargo.toml
 
   dependency-review:
     if: github.event_name == 'pull_request'
